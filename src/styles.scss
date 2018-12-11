@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
+@import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+
+.tabs {
+  height:45px;
+  padding: 0 0 0 0;
+  overflow:visible;
+  @media screen and (max-width: 500px) {
+    height: 60px;
+  }
+}
+
+.tab {
+  width:250px;
+  height:45px;
+  overflow:hidden;
+  float:left;
+  margin:0 -15px 0 0;
+  @media screen and (max-width: 500px) {
+    width: 200px;
+    height: 60px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 160px;
+  }
+}
+
+.tab-box {
+  height:50px;
+  background: #eee;
+  border-radius: 10px 10px 0px 0px;
+  // border:1px solid #ccc;
+  border-bottom: none;
+  margin:0 8px 0;
+  box-shadow: 0 0 2px  #fff inset;
+  overflow: hidden;
+
+  @media screen and (max-width: 500px) {
+    height: 60px;
+  }
+
+ -webkit-transform: perspective(100px) rotateX(0deg);
+ -moz-transform: perspective(100px) rotateX(0deg);
+
+}
+
+.tab.active {
+  // z-index:40;
+  position:relative;
+  padding-bottom:1px;
+}
+
+.tab.active .tab-box{
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 #fff inset;
+
+}
+
+.btn-light-blue {
+  background-color: #679fdc;
+  color: white;
+}
+
+.form-control {
+  background-color: #f2f3f5;
+  border: none;
+}
+
+.bg-agency {
+  background-color: #eef1f3;
+}
+
+.bg-account {
+  background-color: #dce1e6;
+}
