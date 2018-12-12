@@ -42,8 +42,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    //coloque sua lógica de mandar as informações para o back aqui
-    this.router.navigateByUrl("/confirmar");
+    // coloque sua lógica de mandar as informações para o back aqui
+    this.router.navigateByUrl('/confirmar');
   }
 
 }
