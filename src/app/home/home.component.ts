@@ -15,9 +15,10 @@ import { UserService } from '../service/user.service';
   preserveWhitespaces: true
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  // @ViewChild
+  // @ViewChild('form');
 
   banks: Bank[];
+  typePerson = true;
   user: User;
   selectedBank: Bank;
   private inscBankServiceGET: Subscription;
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
+    this.selectedBank = new Bank();
     this.user = new User();
     this.inscBankServiceGET = this.bankService.getBanks().subscribe(
       result => this.banks = result
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.inscBankServiceGET.unsubscribe();
   }
 
-  submit() {
+  onSubmit() {
     //coloque sua lógica de mandar as informações para o back aqui
     this.router.navigateByUrl("/confirmar");
   }

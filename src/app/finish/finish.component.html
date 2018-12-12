@@ -1,14 +1,14 @@
 <div class="container mt-5">
   <div class="row">
     <div class="card border-0">
-      <div class="card-body" *ngIf="false">
-        <p>Olá [Nome Completo].</p>
+      <div class="card-body" *ngIf="situation">
+        <p>Olá {{ payment.username }}.</p>
         
-        <p>O seu pagamento foi realizado no dia [data e hora] no valor de [valor] foi aprovado e processado com sucesso.</p>
+        <p>O seu pagamento foi realizado no dia {{payment.date_pedido | date:"dd/MM/yyyy"}} às {{payment.date_pedido | date:"hh:mm:ss"}} no valor de R${{ payment.valor }} foi aprovado e processado com sucesso.</p>
         
-        <div>Comprovante de pagamento: [token_URL]</div>
-        <div>Comércio: [Comercio]</div>
-        <p>Pedido: [No_pedido]</p>
+        <div>Comprovante de pagamento: {{ payment.token }}</div>
+        <div>Comércio: {{ payment.comerce }}</div>
+        <p>Pedido: {{ payment.no_pedido }}</p>
         
         <p>Lembre-se:</p>
         
@@ -16,16 +16,16 @@
         
         <p>Em caso de dúvidas sobre o pagamento, acesse nossas <a href="#">Perguntas Frequentes</a>, <a href="#">Formulário de Contato</a> ou entre em contato conosco através do email <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </p>
       </div>
-      <div class="card-body" *ngIf="!false">
+      <div class="card-body" *ngIf="!situation">
         <h5><strong>PEDIDO CANCELADO</strong></h5>
         
-        <p>Olá [Nome Completo].</p>
+        <p>Olá {{ payment.username }}.</p>
         
-        <p>O seu Pedido: [No_pedido] no valor de [valor] foi cancelado pelo comércio.</p>
+        <p>O seu Pedido: {{ payment.no_pedido }} no valor de R${{ payment.valor }} foi cancelado pelo comércio.</p>
         
-        <div>Código de identificação do pedido: [No_do_pedido]</div>
-        <div>Comércio: [Comercio]</div>
-        <p>Este pedido era válido para pagamento até: [dia expiração] até [hora_expiracao]</p>
+        <div>Código de identificação do pedido: {{ payment.no_pedido }}</div>
+        <div>Comércio: {{ payment.comerce }}</div>
+        <p>Este pedido era válido para pagamento até: {{payment.date_exp | date:"dd/MM/yyyy"}} às {{payment.date_exp | date:"hh:mm:ss"}}</p>
         
         <p>O prazo para pagamento já esgotou e o pedido foi cancelado automaticamente, pois não localizamos o pagamento dentro do prazo definido. Por favor, realize uma nova compra respeitando o prazo limite para a transação.</p>
         <div class="d-flex">

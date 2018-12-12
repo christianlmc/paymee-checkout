@@ -17,39 +17,57 @@
 
     <div class="card border-0">
       <div class="card-body">
-        <div class="row">
+        <form class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="col-md-12">
             <p class="my-2">Selecione o seu banco:</p>
             <hr>
             <img (click)="selectedBank=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px">
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12" *ngIf="typePerson && selectedBank.name === 'Banco Itau'">
             <div class="form-group">
-              <button type="button" class="btn badge-pill btn-light-blue">Conta PF</button>
-              <button type="button" class="btn badge-pill ">Conta PJ</button>
+              <button type="button" class="btn badge-pill btn-light-blue" (click)="typePerson=true">Conta PF</button>
+              <button type="button" class="btn badge-pill" (click)="typePerson=false">Conta PJ</button>
+            </div>
+          </div>
+          <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-12">
+            <div class="form-group">
+              <button type="button" (click)="typePerson=true" class="btn badge-pill">Conta PF</button>
+              <button type="button" (click)="typePerson=false" class="btn badge-pill btn-light-blue">Conta PJ</button>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input [(ngModel)]="user.cpf" class="form-control badge-pill" placeholder="CPF do titular" required>
+              <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
+              <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
+              </div>
             </div>
             <div class="form-group">
-              <input [(ngModel)]="user.name" class="form-control badge-pill" placeholder="Nome" required>
+              <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Nome" required>
+              <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Preencha com o nome</div>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input [(ngModel)] = "user.email" class="form-control badge-pill" placeholder="Email" required>
+              <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
+              <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Preencha com o Email</div>
+              </div>
             </div>
             <div class="form-group">
-              <input [(ngModel)] = "user.tel" class="form-control badge-pill" placeholder="Telefone" required>
+              <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" required>
+              <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+                <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
+              </div>
             </div>
           </div>
-          <div class="col-md-12 text-center">
-            <button type="button" (click)="submit()" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
+          <div class="col-md-12 text-center form-group">
+            <button type="submit" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
             <small class=" text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
