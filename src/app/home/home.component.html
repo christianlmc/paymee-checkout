@@ -1,19 +1,15 @@
 <div class="container mt-5">
   <div class="row">
     <div class="tabs col-sm-12 col-md-8">
-      <div [ngClass]="{'active': transfer_type, 'tab': true, 'clickable': true}">
+      <div (click)="transfer_type=true" [ngClass]="{'active': transfer_type, 'tab': true, 'clickable': true}">
         <div class="tab-box p-2 text-center">
-          <a (click)="transfer_type=true">
-            <p class="col-md-12 text-muted">Transferência Bancária</p>
-          </a>
+          <p class="col-md-12 text-muted">Transferência Bancária</p>
         </div>
       </div>
 
-      <div [ngClass]="{'active': !transfer_type, 'tab': true, 'clickable': true}">
+      <div (click)="transfer_type=false" [ngClass]="{'active': !transfer_type, 'tab': true, 'clickable': true}">
         <div class="tab-box p-2 text-center">
-          <a (click)="transfer_type=false">
-            <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
-          </a>
+          <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
         </div>
       </div>
 
