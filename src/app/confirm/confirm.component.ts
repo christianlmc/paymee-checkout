@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Bank } from '../model/bank';
+import { BankService } from '../service/bank.service';
 
 @Component({
   selector: 'app-confirm',
@@ -9,6 +11,9 @@ import { map } from 'rxjs/operators';
   preserveWhitespaces: true
 })
 export class ConfirmComponent implements OnInit, OnDestroy {
+
+  bank: Bank;
+  private inscBankService: Subscription;
 
   myDate: string;
   private date_ext: Date;
@@ -19,9 +24,11 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   private subs: Subscription;
 
   constructor(
+    private bankService: BankService
   ) { }
 
   ngOnInit() {
+    this.inscBankService = this.bankService.getBankInfo(1).subscribe(result => this.bank = result);
     this.date_ext = new Date(this.time_exp);
     this.$counter = interval(1000).pipe(
       map((x) => {

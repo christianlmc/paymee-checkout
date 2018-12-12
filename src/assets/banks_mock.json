@@ -2,26 +2,46 @@
     {
         "id": 1,
         "name" : "Banco do Brasil",
-        "logo" : "assets/bb.jpg"
+        "logo" : "assets/bb.jpg",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
     },
     {
         "id": 2,
         "name" : "Banco do Bradesco",
-        "logo" : "assets/bradesco.jpg"
+        "logo" : "assets/bradesco.jpg",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
     },
     {
         "id": 3,
         "name" : "Banco Itau",
-        "logo" : "assets/itau.png"
+        "logo" : "assets/itau.png",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
     },
     {
         "id": 4,
         "name" : "Banco Santander",
-        "logo" : "assets/santander.png"
+        "logo" : "assets/santander.png",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
     },
     {
         "id": 5,
         "name" : "Banco Original",
-        "logo" : "assets/original.png"
+        "logo" : "assets/original.png",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
     }
 ]

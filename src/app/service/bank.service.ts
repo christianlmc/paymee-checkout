@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Bank } from '../model/bank';
-import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,11 @@ export class BankService {
   ) { }
 
   getBanks(): Observable<Bank[]> {
-    return this.httpClient.get<Bank[]> ("../../assets/banks_mock.json");
+    return this.httpClient.get<Bank[]> ('../../assets/banks_mock.json');
   }
+
+  getBankInfo(id: number): Observable<Bank> {
+    return this.httpClient.get<Bank> ('../../assets/banks_mock.json');
+  }
+
 }

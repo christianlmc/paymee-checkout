@@ -12,7 +12,7 @@ export class PaymentService {
     private httpClient: HttpClient
   ) { }
 
-  getPaymentInfo(id: number): Observable<Payment>{
-    return this.httpClient.get<Payment>("../assets/payment_mock.json");
+  getPaymentInfo(id: number): Observable<Payment> {
+    return this.httpClient.get<Payment>('../assets/payment_mock.json');
   }
 }

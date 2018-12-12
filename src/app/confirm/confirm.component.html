@@ -24,7 +24,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <p>Favorecido: </p>
-              <img src="assets/paymee-logo.png" class="img-fluid">
+              <img src="bank.logo_commerce_path" class="img-fluid">
               <small class="text-muted">Paymee Brasil Serviços de Pagamentos SA</small>
             </div>
           </div>
@@ -32,17 +32,17 @@
             <div class="card border-0 text-muted text-center">
               <div class="card-body p-2 bg-agency">
                 Agência:
-                <h3><strong>7633</strong></h3>
+                <h3><strong>{{ bank.agency }}</strong></h3>
               </div>
               <div class="card-body p-2 bg-account">
                 Conta Corrente:
-                <h3><strong>10704-5</strong></h3>
+                <h3><strong>{{ bank.ccurrent }}</strong></h3>
               </div>
             </div>
           </div>
           <div class="col-md-4 text-muted text-center">
             <h4>Valor a Pagar</h4>
-            <h4><strong>R$ 268,98</strong></h4>
+            <h4><strong>R$ {{ bank.value }}</strong></h4>
             <hr>
             <p>Lembre-se que você tem:</p>
             <h4 class="text-danger mb-3"><i class="fa fa-clock fa-lg"></i><strong> {{ time_disp }} </strong></h4>
@@ -53,7 +53,7 @@
               <div class="card border-0">
                 <div class="btn card-header d-flex justify-content-between" data-toggle="collapse" data-target="#aditional-info" aria-expanded="true" aria-controls="aditional-info" id="header">
                   <h5 class="mb-0">
-                    <img src="assets/itau.png" width="30">
+                    <img src="bank.logo" width="30">
                   </h5>
                   <div>
                     <strong>Instruções detalhadas <i class="fa fa-chevron-down"></i></strong>
