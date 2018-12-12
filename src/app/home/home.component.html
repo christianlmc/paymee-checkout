@@ -109,7 +109,7 @@
             </div>
           </div>
           
-          <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
+          <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || selectedBank.name === 'Banco do Brasil' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
             <div class="form-group">
               <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
               <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
