@@ -19,7 +19,7 @@ export class BankService {
   }
 
   getBankInfo(id: number): Observable<Bank> {
-    return this.httpClient.get<Bank> ('../../assets/banks_mock.json');
+    return this.httpClient.get<Bank> ('../../assets/bank__info_mock.json');
   }
 
 }
