@@ -2,7 +2,7 @@
     "id": 1,
     "name" : "Banco do Brasil",
     "logo" : "assets/bb.jpg",
-    "logo_commerce_path": "assets/mercadopago-logo.png",
+    "logo_commerce_path": "assets/paymee-logo.png",
     "agency": "1313",
     "ccurrent": "1919-6",
     "value": "268,68"

@@ -28,6 +28,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.bank = new Bank();
     this.inscBankService = this.bankService.getBankInfo(1).subscribe(result => this.bank = result);
     this.date_ext = new Date(this.time_exp);
     this.$counter = interval(1000).pipe(
