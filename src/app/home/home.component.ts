@@ -18,10 +18,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   // @ViewChild('form');
 
   banks: Bank[];
+  banksMoney: Bank[];
   typePerson = true;
   user: User;
   selectedBank: Bank;
+  selectedBankMoney: Bank;
   private inscBankServiceGET: Subscription;
+  private inscBankServiceMoneyGET: Subscription;
   public transfer_type = true;
 
   constructor(
@@ -35,6 +38,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.user = new User();
     this.inscBankServiceGET = this.bankService.getBanks().subscribe(
       result => this.banks = result
+    );
+    this.inscBankServiceMoneyGET = this.bankService.getBanksMoney().subscribe(
+      result => this.banksMoney = result
     );
   }
 

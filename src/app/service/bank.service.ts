@@ -22,4 +22,8 @@ export class BankService {
     return this.httpClient.get<Bank> ('../../assets/bank__info_mock.json');
   }
 
+  getBanksMoney(): Observable<Bank[]> {
+    return this.httpClient.get<Bank[]> ('../../assets/banks_money_mock.json');
+  }
+
 }

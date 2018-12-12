@@ -1,0 +1,20 @@
+[
+    {
+        "id": 3,
+        "name" : "Banco Itau",
+        "logo" : "assets/itau.png",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
+    },
+    {
+        "id": 4,
+        "name" : "Banco Santander",
+        "logo" : "assets/santander.png",
+        "logo_commerce_path": "assets/mercadopago-logo.png",
+        "agency": "1313",
+        "ccurrent": "1919-6",
+        "value": "268,68"
+    }
+]
