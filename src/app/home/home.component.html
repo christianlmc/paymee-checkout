@@ -3,19 +3,23 @@
     <div class="tabs col-sm-12 col-md-8">
       <div class="tab active">
         <div class="tab-box p-2 text-center">
-          <p class="col-md-12 text-muted">Transferência Bancária</p>
+          <a (click)="transfer_type=true">
+            <p class="col-md-12 text-muted">Transferência Bancária</p>
+          </a>
         </div>
       </div>
 
       <div class="tab">
         <div class="tab-box p-2 text-center">
-          <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
+          <a (click)="transfer_type=false">
+            <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
+          </a>
         </div>
       </div>
 
     </div>
 
-    <div class="card border-0">
+    <div *ngIf="transfer_type" class="card border-0">
       <div class="card-body">
         <form class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 

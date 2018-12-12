@@ -9,13 +9,15 @@
 
       <div class="tab">
         <div class="tab-box p-2 text-center">
-          <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
+          <a (click)="transfer_type=false">
+            <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
+          </a>
         </div>
       </div>
 
     </div>
 
-    <div class="card border-0">
+    <div *ngIf="transfer_type" class="card border-0">
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
@@ -24,7 +26,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <p>Favorecido: </p>
-              <img [src]="bank.logo_commerce_path" class="img-fluid">
+              <img *ngIf="bank" [src]="bank.logo_commerce_path" class="img-fluid">
               <small class="text-muted">Paymee Brasil Serviços de Pagamentos SA</small>
             </div>
           </div>
@@ -53,7 +55,7 @@
               <div class="card border-0">
                 <div class="btn card-header d-flex justify-content-between" data-toggle="collapse" data-target="#aditional-info" aria-expanded="true" aria-controls="aditional-info" id="header">
                   <h5 class="mb-0">
-                    <img [src]="bank.logo" width="30">
+                    <img *ngIf="bank" [src]="bank.logo" width="30">
                   </h5>
                   <div>
                     <strong>Instruções detalhadas <i class="fa fa-chevron-down"></i></strong>

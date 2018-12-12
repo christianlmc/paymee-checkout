@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   user: User;
   selectedBank: Bank;
   private inscBankServiceGET: Subscription;
+  public transfer_type = true;
 
   constructor(
     private bankService: BankService,

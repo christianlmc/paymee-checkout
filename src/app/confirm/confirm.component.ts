@@ -14,6 +14,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
 
   bank: Bank;
   private inscBankService: Subscription;
+  public transfer_type = true;
 
   myDate: string;
   private date_ext: Date;
