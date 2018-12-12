@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-confirm',
@@ -6,11 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm.component.scss'],
   preserveWhitespaces: true
 })
-export class ConfirmComponent implements OnInit {
+export class ConfirmComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  
 
-  ngOnInit() {
+  constructor(
+  ) { }
+
+  ngOnInit() { }
+
+  ngOnDestroy() {
+
   }
 
 }

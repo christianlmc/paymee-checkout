@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name" : "Banco do Brasil",
+        "logo" : "assets/bb.jpg"
+    },
+    {
+        "id": 2,
+        "name" : "Banco do Bradesco",
+        "logo" : "assets/bradesco.jpg"
+    },
+    {
+        "id": 3,
+        "name" : "Banco Itau",
+        "logo" : "assets/itau.png"
+    },
+    {
+        "id": 4,
+        "name" : "Banco Santander",
+        "logo" : "assets/santander.png"
+    },
+    {
+        "id": 5,
+        "name" : "Banco Original",
+        "logo" : "assets/original.png"
+    }
+]

@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+
+import { Subscription } from 'rxjs';
+
+import { Bank } from '../model/bank';
+import { BankService } from '../service/bank.service';
+import { User } from '../model/user';
+import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -6,34 +14,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
   preserveWhitespaces: true
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  // @ViewChild
 
-  banks;
-  constructor() { }
+  banks: Bank[];
+  user: User;
+  selectedBank: Bank;
+  private inscBankServiceGET: Subscription;
+
+  constructor(
+    private bankService: BankService,
+    private userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
-    this.banks = [
-      {
-        'name' : 'Banco do Brasil',
-        'logo' : 'assets/bb.jpg'
-      },
-      {
-        'name' : 'Banco do Bradesco',
-        'logo' : 'assets/bradesco.jpg'
-      },
-      {
-        'name' : 'Banco Itau',
-        'logo' : 'assets/itau.png'
-      },
-      {
-        'name' : 'Banco Santander',
-        'logo' : 'assets/santander.png'
-      },
-      {
-        'name' : 'Banco Original',
-        'logo' : 'assets/original.png'
-      }
-    ];
+    this.user = new User();
+    this.inscBankServiceGET = this.bankService.getBanks().subscribe(
+      result => this.banks = result
+    );
+  }
+
+  ngOnDestroy() {
+    this.inscBankServiceGET.unsubscribe();
+  }
+
+  submit() {
+    //coloque sua lógica de mandar as informações para o back aqui
+    this.router.navigateByUrl("/confirmar");
   }
 
 }

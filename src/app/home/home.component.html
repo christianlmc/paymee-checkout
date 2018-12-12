@@ -21,7 +21,7 @@
           <div class="col-md-12">
             <p class="my-2">Selecione o seu banco:</p>
             <hr>
-            <img *ngFor="let bank of banks" [src]="bank.logo" height="80px">
+            <img (click)="selectedBank=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px">
           </div>
           <div class="col-md-12">
             <div class="form-group">
@@ -31,22 +31,22 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input class="form-control badge-pill" placeholder="CPF do titular">
+              <input [(ngModel)]="user.cpf" class="form-control badge-pill" placeholder="CPF do titular" required>
             </div>
             <div class="form-group">
-              <input class="form-control badge-pill" placeholder="Nome">
+              <input [(ngModel)]="user.name" class="form-control badge-pill" placeholder="Nome" required>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input class="form-control badge-pill" placeholder="Email">
+              <input [(ngModel)] = "user.email" class="form-control badge-pill" placeholder="Email" required>
             </div>
             <div class="form-group">
-              <input class="form-control badge-pill" placeholder="Telefone">
+              <input [(ngModel)] = "user.tel" class="form-control badge-pill" placeholder="Telefone" required>
             </div>
           </div>
           <div class="col-md-12 text-center">
-            <button routerLink="confirmar" type="button" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
+            <button type="button" (click)="submit()" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
             <small class=" text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
           </div>
         </div>
