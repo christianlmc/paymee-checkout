@@ -65,7 +65,7 @@
 
           <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau' || selectedBank.name === 'Banco do Brasil' " class="col-md-6">
             <div class="form-group">
-              <input type="text" name="agencia" [(ngModel)]="user.agencia" #agencia="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && agencia.invalid }" placeholder="Número da agência" required>
+              <input type="text" name="agencia" [(ngModel)]="user.agencia" #agencia="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && agencia.invalid }" placeholder="Número da agência" mask="0000-0" required>
               <div *ngIf="f.submitted && agencia.invalid" class="invalid-feedback">
                 <div *ngIf="agencia.errors.required">Preencha com o número da agência</div>
               </div>
@@ -87,7 +87,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="text" name="cnpj" [(ngModel)]="user.cnpj" #cnpj="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cnpj.invalid }" placeholder="CNPJ do titular" required>
+              <input type="text" name="cnpj" [(ngModel)]="user.cnpj" #cnpj="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cnpj.invalid }" placeholder="CNPJ do titular" mask='00.000.000/0000-00' required>
               <div *ngIf="f.submitted && cnpj.invalid" class="invalid-feedback">
                 <div *ngIf="cnpj.errors.required">Preencha com o CNPJ</div>
               </div>
@@ -96,7 +96,7 @@
 
           <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
             <div class="form-group">
-              <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
+              <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" mask='000.000.000-00' class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
               <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
                 <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
               </div>
@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" required>
+              <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" mask='(00) 00000-0000' required>
               <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
                 <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
               </div>

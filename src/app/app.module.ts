@@ -10,6 +10,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { FinishComponent } from './finish/finish.component';
 
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    Ng2CarouselamosModule
+    
+    Ng2CarouselamosModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
