@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { FinishComponent } from './finish/finish.component';
 
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { FinishComponent } from './finish/finish.component';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2CarouselamosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
