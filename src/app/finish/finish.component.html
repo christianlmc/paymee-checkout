@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="card border-0">
+      <div class="card-body" *ngIf="false">
+        <p>Olá [Nome Completo].</p>
+        
+        <p>O seu pagamento foi realizado no dia [data e hora] no valor de [valor] foi aprovado e processado com sucesso.</p>
+        
+        <div>Comprovante de pagamento: [token_URL]</div>
+        <div>Comércio: [Comercio]</div>
+        <p>Pedido: [No_pedido]</p>
+        
+        <p>Lembre-se:</p>
+        
+        <p>A PayMee é apenas um meio de pagamento, portanto caso você tenha qualquer reclamação, dúvida ou solicitação referente ao produto ou serviço comprado, por favor entre em contato diretamente com o comércio onde a compra foi realizada.</p>
+        
+        <p>Em caso de dúvidas sobre o pagamento, acesse nossas <a href="#">Perguntas Frequentes</a>, <a href="#">Formulário de Contato</a> ou entre em contato conosco através do email <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </p>
+      </div>
+      <div class="card-body" *ngIf="!false">
+        <h5><strong>PEDIDO CANCELADO</strong></h5>
+        
+        <p>Olá [Nome Completo].</p>
+        
+        <p>O seu Pedido: [No_pedido] no valor de [valor] foi cancelado pelo comércio.</p>
+        
+        <div>Código de identificação do pedido: [No_do_pedido]</div>
+        <div>Comércio: [Comercio]</div>
+        <p>Este pedido era válido para pagamento até: [dia expiração] até [hora_expiracao]</p>
+        
+        <p>O prazo para pagamento já esgotou e o pedido foi cancelado automaticamente, pois não localizamos o pagamento dentro do prazo definido. Por favor, realize uma nova compra respeitando o prazo limite para a transação.</p>
+        <div class="d-flex">
+          <i class="fa fa-star fa-2x text-danger mr-2"></i>
+          <span> Caso já tenha efetuado o pagamento, por favor entre em contato conosco o mais rápido possível e <strong>envie o comprovante de pagamento</strong> para o e-mail<a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
