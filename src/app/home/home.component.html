@@ -23,7 +23,7 @@
             <p class="my-2">Selecione o seu banco:</p>
             <hr>
 
-            <div ng2-carouselamos
+            <div ng2-carouselamos class="mb-3"
               [items]="banks"
               [width]="505"
               [$prev]="prev"
@@ -77,7 +77,7 @@
                 <div *ngIf="bank_account.errors.required">Preencha com a conta corrente</div>
               </div>
             </div>
-          <div>
+          </div>
 
           <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-6">
             <div class="form-group">
