@@ -19,7 +19,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   myDate: string;
   private date_ext: Date;
   private $counter: Observable<number>;
-  private time_exp = '2020-1-1 03:24:00';
+  private time_exp = '2019-1-1 03:24:00';
   private difference: number;
   private time_disp: string;
   private subs: Subscription;

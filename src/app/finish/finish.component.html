@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="card border-0">
-      <div class="card-body" *ngIf="situation">
+      <div class="card-body mt-4" *ngIf="situation">
         <p>Olá {{ payment.username }}.</p>
         
         <p>O seu pagamento foi realizado no dia {{payment.date_pedido | date:"dd/MM/yyyy"}} às {{payment.date_pedido | date:"hh:mm:ss"}} no valor de R${{ payment.valor }} foi aprovado e processado com sucesso.</p>
@@ -10,7 +10,7 @@
         <div>Comércio: {{ payment.comerce }}</div>
         <p>Pedido: {{ payment.no_pedido }}</p>
         
-        <p>Lembre-se:</p>
+        <p class="mt-5">Lembre-se:</p>
         
         <p>A PayMee é apenas um meio de pagamento, portanto caso você tenha qualquer reclamação, dúvida ou solicitação referente ao produto ou serviço comprado, por favor entre em contato diretamente com o comércio onde a compra foi realizada.</p>
         

@@ -1,3 +1,11 @@
 .clickable {
     cursor: pointer;
 }
+
+.selected {
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+    border-color: lightgray;
+    padding: 2px;
+}

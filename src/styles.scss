@@ -6,59 +6,110 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
 
 .tabs {
-  height:45px;
-  padding: 0 0 0 0;
-  overflow:visible;
-  @media screen and (max-width: 500px) {
-    height: 60px;
+  margin: 0;
+}
+.tabs li { 
+  /* Makes a horizontal row */
+  float: left; 
+	
+  /* So the psueudo elements can be
+     abs. positioned inside */
+  position: relative; 
+  list-style-type: none;
+}
+.tabs a { 
+  /* Make them block level
+     and only as wide as they need */
+  float: left; 
+  padding: 15px 10px; 
+  text-decoration: none;
+  
+  /* Default colors */ 
+  color: grey;
+  background: #eee; 
+  
+  /* Only round the top corners */
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; 
+}
+.tabs .active {
+  /* Highest, active tab is on top */
+  z-index: 3;
+}
+.tabs .active a { 
+  /* Colors when tab is active */
+  background: white; 
+  color: grey; 
+}
+.tabs li:before, .tabs li:after, 
+.tabs li a:before, .tabs li a:after {
+  /* All pseudo elements are 
+     abs. positioned and on bottom */
+  position: absolute;
+  bottom: 0;
+}
+/* Only the first, last, and active
+   tabs need pseudo elements at all */
+.tabs li:last-child:after,   .tabs li:last-child a:after,
+.tabs li:first-child:before, .tabs li:first-child a:before,
+.tabs .active:after,   .tabs .active:before, 
+.tabs .active a:after, .tabs .active a:before {
+  content: "";
+}
+.tabs .active:before, .tabs .active:after {
+  background: white; 
+  
+  /* Squares below circles */
+  z-index: 1;
+}
+@media only screen and (min-width: 376px) {
+  /* Squares */
+  .tabs li:before, .tabs li:after {
+    background: #eee;
+    width: 10px;
+    height: 10px;
+  }
+  .tabs li:before {
+    left: -10px;      
+  }
+  .tabs li:after { 
+    right: -10px;
+  }
+  
+  /* Circles */
+  .tabs li a:after, .tabs li a:before {
+    width: 20px; 
+    height: 20px;
+    /* Circles are circular */
+    -webkit-border-radius: 10px;
+    -moz-border-radius:    10px;
+    border-radius:         10px;
+    background: #dee1e6;
+    
+    /* Circles over squares */
+    z-index: 2;
   }
 }
-
-.tab {
-  width:250px;
-  height:45px;
-  overflow:hidden;
-  float:left;
-  margin:0 -15px 0 0;
-  @media screen and (max-width: 500px) {
-    width: 200px;
-    height: 60px;
+  .tabs .active a:after, .tabs .active a:before {
+    background: #eee;
   }
-  @media screen and (max-width: 400px) {
-    width: 160px;
-  }
+/* First and last tabs have different
+   outside color needs */
+.tabs li:first-child.active a:before,
+.tabs li:last-child.active a:after {
+  background: #dee1e6;
+}
+.tabs li a:before {
+  left: -20px;
+}
+.tabs li a:after {
+  right: -20px;
 }
 
-.tab-box {
-  height:50px;
-  background: #eee;
-  border-radius: 10px 10px 0px 0px;
-  // border:1px solid #ccc;
-  border-bottom: none;
-  margin:0 8px 0;
-  box-shadow: 0 0 2px  #fff inset;
-  overflow: hidden;
-
-  @media screen and (max-width: 500px) {
-    height: 60px;
-  }
-
- -webkit-transform: perspective(100px) rotateX(0deg);
- -moz-transform: perspective(100px) rotateX(0deg);
-
-}
-
-.tab.active {
-  // z-index:40;
-  position:relative;
-  padding-bottom:1px;
-}
-
-.tab.active .tab-box{
-  background-color: #fff;
-  box-shadow: 0 0 2px 0 #fff inset;
-
-}
 
 .btn-light-blue {
   background-color: #679fdc;

@@ -1,208 +1,191 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="tabs col-sm-12 col-md-8">
-      <div (click)="transfer_type=true" [ngClass]="{'active': transfer_type, 'tab': true, 'clickable': true}">
-        <div class="tab-box p-2 text-center">
-          <p class="col-md-12 text-muted">Transferência Bancária</p>
+  <div class="row">  
+    <ul class="tabs group">
+      <li [ngClass]="{'active': transfer_type}" (click)="transfer_type=true"><a href="javascript:;">Transferência Bancária</a></li> 
+      <li [ngClass]="{'active': !transfer_type}" (click)="transfer_type=false"><a href="javascript:;">Pagamento em Dinheiro</a></li>
+    </ul>
+    <div class="col-md-12">
+      <div class="card border-0">
+        <div class="card-header bg-white">
+          <span class="col-md-12 mx-3 text-secondary">Selecione o seu banco:</span>   
         </div>
-      </div>
+        <div class="card-body mx-3">
+          <form *ngIf="!transfer_type" class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="col-md-12">
+              <div ng2-carouselamos class="mb-3"
+                [items]="banksMoney"
+                [width]="505"
+                [$prev]="prev"
+                [$next]="next"
+                [$item]="item"
+                (onSelectedItem)="true"
+                >
+              </div>
+      
+              <ng-template #prev>
+                <i class="fa fa-chevron-left fa-2x ml-1"></i>
+              </ng-template>
+              <ng-template #next>
+                <i class="fa fa-chevron-right fa-2x mr-1"></i>
+              </ng-template>
+              
+              <ng-template #item let-bank let-i="id">
+                <div (click)="selectedBankMoney=bank" class="mr-5" >
+                  <img [src]="bank.logo" width="60px" [ngClass]="{'selected': selectedBankMoney===bank,
+                  'rounded': selectedBankMoney!==bank}" >
+                </div>
+              </ng-template>
+              <!-- <img (click)="selectedBankMoney=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px"> -->
+            </div>
 
-      <div (click)="transfer_type=false" [ngClass]="{'active': !transfer_type, 'tab': true, 'clickable': true}">
-        <div class="tab-box p-2 text-center">
-          <p class="col-md-12 text-muted">Pagamento em Dinheiro</p>
+            <div *ngIf="selectedBankMoney" class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" mask='000.000.000-00' class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
+                <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                  <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Nome" required>
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                  <div *ngIf="name.errors.required">Preencha com o nome</div>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="selectedBankMoney" class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                  <div *ngIf="email.errors.required">Preencha com o Email</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" mask='(00) 00000-0000' required>
+                <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+                  <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 text-center form-group mb-0">
+              <button type="submit" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
+              <small class=" text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
+            </div>
+
+          </form>
+          <form *ngIf="transfer_type" class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      
+            <div class="col-md-12">    
+              <div ng2-carouselamos class="mb-4"
+                [items]="banks"
+                [width]="505"
+                [$prev]="prev"
+                [$next]="next"
+                [$item]="item"
+                (onSelectedItem)="true"
+                >
+              </div>
+      
+              <ng-template #prev>
+                <i class="fa fa-chevron-left fa-2x ml-1"></i>
+              </ng-template>
+              <ng-template #next>
+                <i class="fa fa-chevron-right fa-2x mr-1"></i>
+              </ng-template>
+              
+              <ng-template #item let-bank let-i="id">
+                <div (click)="selectedBank=bank" class="mr-5" >
+                  <img [src]="bank.logo" width="60px" [ngClass]="{'selected': selectedBank===bank,
+                  'rounded': selectedBank!==bank}" >
+                </div>
+              </ng-template>
+      
+              <!-- <img (click)="selectedBank=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px"> -->
+            </div>
+      
+            <div class="col-md-12" *ngIf="typePerson && selectedBank.name === 'Banco Itau'">
+              <div class="form-group">
+                <button type="button" class="btn badge-pill btn-light-blue" (click)="typePerson=true">Conta PF</button>
+                <button type="button" class="btn badge-pill" (click)="typePerson=false">Conta PJ</button>
+              </div>
+            </div>
+      
+            <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-12">
+              <div class="form-group">
+                <button type="button" (click)="typePerson=true" class="btn badge-pill">Conta PF</button>
+                <button type="button" (click)="typePerson=false" class="btn badge-pill btn-light-blue">Conta PJ</button>
+              </div>
+            </div>
+      
+            <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau' || selectedBank.name === 'Banco do Brasil' " class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="agencia" [(ngModel)]="user.agencia" #agencia="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && agencia.invalid }" placeholder="Número da agência" mask="0000-0" required>
+                <div *ngIf="f.submitted && agencia.invalid" class="invalid-feedback">
+                  <div *ngIf="agencia.errors.required">Preencha com o número da agência</div>
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <input type="text" name="bank_account" [(ngModel)]="user.bank_account" #bank_account="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && bank_account.invalid }" placeholder="Conta corrente" required>
+                <div *ngIf="f.submitted && bank_account.invalid" class="invalid-feedback">
+                  <div *ngIf="bank_account.errors.required">Preencha com a conta corrente</div>
+                </div>
+              </div>
+            </div>
+      
+            <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                  <div *ngIf="email.errors.required">Preencha com o Email</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="cnpj" [(ngModel)]="user.cnpj" #cnpj="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cnpj.invalid }" placeholder="CNPJ do titular" mask='00.000.000/0000-00' required>
+                <div *ngIf="f.submitted && cnpj.invalid" class="invalid-feedback">
+                  <div *ngIf="cnpj.errors.required">Preencha com o CNPJ</div>
+                </div>
+              </div>
+            </div>
+      
+            <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" mask='000.000.000-00' class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
+                <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                  <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Nome" required>
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                  <div *ngIf="name.errors.required">Preencha com o nome</div>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || selectedBank.name === 'Banco do Brasil' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                  <div *ngIf="email.errors.required">Preencha com o Email</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" mask='(00) 00000-0000' required>
+                <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+                  <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-12 text-center form-group mb-0">
+              <button type="submit" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
+              <small class="text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
+            </div>
+      
+          </form>
         </div>
-      </div>
-
-    </div>
-
-    <div *ngIf="!transfer_type" class="card border-0">
-      <div class="card-body">
-        <form class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
-          <div class="col-md-12">
-            <p class="my-2">Selecione o seu banco:</p>
-            <hr>
-
-            <div ng2-carouselamos class="mb-3"
-              [items]="banksMoney"
-              [width]="505"
-              [$prev]="prev"
-              [$next]="next"
-              [$item]="item"
-              (onSelectedItem)="true"
-              >
-            </div>
-
-            <ng-template #prev>
-              <i class="fa fa-chevron-left fa-2x ml-1"></i>
-            </ng-template>
-            <ng-template #next>
-              <i class="fa fa-chevron-right fa-2x mr-1"></i>
-            </ng-template>
-            
-            <ng-template #item let-bank let-i="id">
-              <div (click)="selectedBankMoney=bank" [ngClass]="selectedBankMoney===bank ? 'border border-primary' : ''">
-                <img [src]="bank.logo" width="100px">
-              </div>
-            </ng-template>
-
-            <!-- <img (click)="selectedBank=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px"> -->
-          </div>
-
-          <div *ngIf="selectedBankMoney" class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" mask='000.000.000-00' class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
-              <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
-                <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Nome" required>
-              <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                <div *ngIf="name.errors.required">Preencha com o nome</div>
-              </div>
-            </div>
-          </div>
-          
-          <div *ngIf="selectedBankMoney" class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
-              <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                <div *ngIf="email.errors.required">Preencha com o Email</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" mask='(00) 00000-0000' required>
-              <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
-                <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 text-center form-group">
-            <button type="submit" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
-            <small class=" text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
-          </div>
-
-        </form>
-      </div>
-    </div>
-
-    <div *ngIf="transfer_type" class="card border-0">
-      <div class="card-body">
-        <form class="row" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
-          <div class="col-md-12">
-            <p class="my-2">Selecione o seu banco:</p>
-            <hr>
-
-            <div ng2-carouselamos class="mb-3"
-              [items]="banks"
-              [width]="505"
-              [$prev]="prev"
-              [$next]="next"
-              [$item]="item"
-              (onSelectedItem)="true"
-              >
-            </div>
-
-            <ng-template #prev>
-              <i class="fa fa-chevron-left fa-2x ml-1"></i>
-            </ng-template>
-            <ng-template #next>
-              <i class="fa fa-chevron-right fa-2x mr-1"></i>
-            </ng-template>
-            
-            <ng-template #item let-bank let-i="id">
-              <div (click)="selectedBank=bank" [ngClass]="selectedBank===bank ? 'border border-primary' : ''">
-                <img [src]="bank.logo" width="100px">
-              </div>
-            </ng-template>
-
-            <!-- <img (click)="selectedBank=bank" *ngFor="let bank of banks" [src]="bank.logo" height="80px"> -->
-          </div>
-
-          <div class="col-md-12" *ngIf="typePerson && selectedBank.name === 'Banco Itau'">
-            <div class="form-group">
-              <button type="button" class="btn badge-pill btn-light-blue" (click)="typePerson=true">Conta PF</button>
-              <button type="button" class="btn badge-pill" (click)="typePerson=false">Conta PJ</button>
-            </div>
-          </div>
-
-          <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-12">
-            <div class="form-group">
-              <button type="button" (click)="typePerson=true" class="btn badge-pill">Conta PF</button>
-              <button type="button" (click)="typePerson=false" class="btn badge-pill btn-light-blue">Conta PJ</button>
-            </div>
-          </div>
-
-          <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau' || selectedBank.name === 'Banco do Brasil' " class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="agencia" [(ngModel)]="user.agencia" #agencia="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && agencia.invalid }" placeholder="Número da agência" mask="0000-0" required>
-              <div *ngIf="f.submitted && agencia.invalid" class="invalid-feedback">
-                <div *ngIf="agencia.errors.required">Preencha com o número da agência</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="bank_account" [(ngModel)]="user.bank_account" #bank_account="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && bank_account.invalid }" placeholder="Conta corrente" required>
-              <div *ngIf="f.submitted && bank_account.invalid" class="invalid-feedback">
-                <div *ngIf="bank_account.errors.required">Preencha com a conta corrente</div>
-              </div>
-            </div>
-          </div>
-
-          <div *ngIf="!typePerson && selectedBank.name === 'Banco Itau'" class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
-              <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                <div *ngIf="email.errors.required">Preencha com o Email</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="cnpj" [(ngModel)]="user.cnpj" #cnpj="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cnpj.invalid }" placeholder="CNPJ do titular" mask='00.000.000/0000-00' required>
-              <div *ngIf="f.submitted && cnpj.invalid" class="invalid-feedback">
-                <div *ngIf="cnpj.errors.required">Preencha com o CNPJ</div>
-              </div>
-            </div>
-          </div>
-
-          <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="cpf" [(ngModel)]="user.cpf" #cpf="ngModel" mask='000.000.000-00' class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="CPF do titular" required>
-              <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
-                <div *ngIf="cpf.errors.required">Preencha com o CPF</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Nome" required>
-              <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                <div *ngIf="name.errors.required">Preencha com o nome</div>
-              </div>
-            </div>
-          </div>
-          
-          <div *ngIf="selectedBank.name === 'Banco do Bradesco' || selectedBank.name === 'Banco Santander' || selectedBank.name === 'Banco Original' || selectedBank.name === 'Banco do Brasil' || (typePerson && selectedBank.name === 'Banco Itau')" class="col-md-6">
-            <div class="form-group">
-              <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email" required>
-              <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                <div *ngIf="email.errors.required">Preencha com o Email</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name="tel" [(ngModel)]="user.tel" #tel="ngModel" class="form-control badge-pill" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" placeholder="Telefone" mask='(00) 00000-0000' required>
-              <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
-                <div *ngIf="tel.errors.required">Preencha com o Telefone</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 text-center form-group">
-            <button type="submit" class="btn btn-light-blue badge-pill btn-block mb-2">OBTER INSTRUÇÕES DE PAGAMENTO</button>
-            <small class=" text-muted">Em caso de dúvidas, envie um e-mail para falecom@paymee.com.br</small>
-          </div>
-
-        </form>
       </div>
     </div>
   </div>

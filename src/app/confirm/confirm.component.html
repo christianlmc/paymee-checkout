@@ -1,14 +1,14 @@
 <div class="container mt-5">
   <div class="row">
     <div class="card border-0">
-      <div class="card-body">
+      <div class="card-body mx-3 pb-2">
         <div class="row">
           <div class="col-md-12">
-            <p class="my-2">Dados para pagamento:</p>
+            <p class="my-2 text-muted">Dados para pagamento:</p>
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <p>Favorecido: </p>
+              <p class="text-muted">Favorecido: </p>
               <img *ngIf="bank" [src]="bank.logo_commerce_path" class="img-fluid">
               <small class="text-muted">Paymee Brasil Serviços de Pagamentos SA</small>
             </div>
@@ -29,19 +29,21 @@
             <h4>Valor a Pagar</h4>
             <h4><strong>R$ {{ bank.value }}</strong></h4>
             <hr>
-            <p>Lembre-se que você tem:</p>
-            <h4 class="text-danger mb-3"><i class="fa fa-clock fa-lg"></i><strong> {{ time_disp }} </strong></h4>
+            <span>Lembre-se que você tem:</span>
+            <h5 class="text-danger mb-3">
+              <i class="fa fa-clock fa-lg"></i><small><strong> {{ time_disp }}</strong></small>
+            </h5>
             <p>para fazer seu pagamento.</p>
           </div>
           <div class="col-md-12">
-            <div class="accordion mb-3" id="accordion">
+            <div class="accordion" id="accordion">
               <div class="card border-0">
-                <div class="btn card-header d-flex justify-content-between" data-toggle="collapse" data-target="#aditional-info" aria-expanded="true" aria-controls="aditional-info" id="header">
+                <div class="btn bg-light d-flex justify-content-between" data-toggle="collapse" data-target="#aditional-info" aria-expanded="true" aria-controls="aditional-info" id="header">
                   <h5 class="mb-0">
                     <img *ngIf="bank" [src]="bank.logo" width="30">
                   </h5>
                   <div>
-                    <strong>Instruções detalhadas <i class="fa fa-chevron-down"></i></strong>
+                    <strong>Instruções detalhadas <i class="fa fa-chevron-down fa-sm"></i></strong>
                   </div>
                 </div>
                 <div id="aditional-info" class="collapse" aria-labelledby="header" data-parent="#accordion" >
@@ -52,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 mb-3">
             <div class="d-flex justify-content-between">
               <a href="https://www.mercadopago.com"><small>Retorne a MercadoPago</small></a>
               <small>Receber Instruções via: <i class="fa fa-envelope"></i> <i class="fa fa-print"></i></small>
