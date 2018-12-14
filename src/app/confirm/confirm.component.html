@@ -1,19 +1,20 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="card border-0">
+    <div class="card border-0 col-md-10 offset-md-1">
       <div class="card-body mx-3 pb-2">
         <div class="row">
           <div class="col-md-12">
             <p class="my-2 text-muted">Dados para pagamento:</p>
           </div>
-          <div class="col-md-4">
+
+          <div class="col-md-4 bg-ultraligth-grey">
             <div class="form-group">
               <p class="text-muted">Favorecido: </p>
-              <img *ngIf="bank" [src]="bank.logo_commerce_path" class="img-fluid">
+              <img *ngIf="bank" [src]="bank.logo_commerce_path" class="img-fluid w-75"><br>
               <small class="text-muted">Paymee Brasil Serviços de Pagamentos SA</small>
             </div>
           </div>
-          <div class="col-md-4 mb-2">
+          <div class="col-md-4 bg-ultraligth-grey">
             <div class="card border-0 text-muted text-center">
               <div class="card-body p-2 bg-agency">
                 Agência:
@@ -25,17 +26,20 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 text-muted text-center">
-            <h4>Valor a Pagar</h4>
-            <h4><strong>R$ {{ bank.value }}</strong></h4>
+          <div class="col-md-4 text-muted bg-ultraligth-grey">
+            <div class="text-center">
+              <h4>Valor a Pagar</h4>
+              <h4><strong>R$ {{ bank.value }}</strong></h4>
+            </div>
             <hr>
             <span>Lembre-se que você tem:</span>
-            <h5 class="text-danger mb-3">
+            <h5 class="text-danger my-3 text-center">
               <i class="fa fa-clock fa-lg"></i><small><strong> {{ time_disp }}</strong></small>
             </h5>
             <p>para fazer seu pagamento.</p>
           </div>
-          <div class="col-md-12">
+
+          <div class="col-md-12 mt-3">
             <div class="accordion" id="accordion">
               <div class="card border-0">
                 <div class="btn bg-light d-flex justify-content-between" data-toggle="collapse" data-target="#aditional-info" aria-expanded="true" aria-controls="aditional-info" id="header">
@@ -48,7 +52,12 @@
                 </div>
                 <div id="aditional-info" class="collapse" aria-labelledby="header" data-parent="#accordion" >
                   <div class="card-body">
-                    Instruções aqui
+                      <p><span class="step">1</span>Acesse https://www.itau.com.br/ com sua agência, conta e senha.</p>
+                      <p><span class="step">2</span>No menu de serviços, selecione "Transferência entre Contas Itaú"</p>
+                      <p><span class="step">3</span>Informe a agência 7633 e conta-corrente 10704-5</p>
+                      <p><span class="step">4</span> Confirme o nome para pagamento: PayMee Brasil Serviços de Pagamentos S.A.</p>
+                      <p><span class="step">5</span> Confirme o valor de: R$ 5.00 e efetue o pagamento. </p>
+                      <p><span class="step">6</span> PRONTO! O pagamento do seu pedido será confirmado à Zona Azul (Inova) </p>
                   </div>
                 </div>
               </div>

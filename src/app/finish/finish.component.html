@@ -1,36 +1,42 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="card border-0">
+    <div class="card border-0 col-md-10 offset-md-1">
       <div class="card-body mt-4" *ngIf="situation">
-        <p>Olá {{ payment.username }}.</p>
-        
-        <p>O seu pagamento foi realizado no dia {{payment.date_pedido | date:"dd/MM/yyyy"}} às {{payment.date_pedido | date:"hh:mm:ss"}} no valor de R${{ payment.valor }} foi aprovado e processado com sucesso.</p>
-        
-        <div>Comprovante de pagamento: {{ payment.token }}</div>
-        <div>Comércio: {{ payment.comerce }}</div>
-        <p>Pedido: {{ payment.no_pedido }}</p>
-        
-        <p class="mt-5">Lembre-se:</p>
-        
-        <p>A PayMee é apenas um meio de pagamento, portanto caso você tenha qualquer reclamação, dúvida ou solicitação referente ao produto ou serviço comprado, por favor entre em contato diretamente com o comércio onde a compra foi realizada.</p>
-        
-        <p>Em caso de dúvidas sobre o pagamento, acesse nossas <a href="#">Perguntas Frequentes</a>, <a href="#">Formulário de Contato</a> ou entre em contato conosco através do email <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </p>
+        <div class="bg-ultraligth-grey p-3">
+          <p>Olá {{ payment.username }}.</p>
+          
+          <p>O seu pagamento foi realizado no dia {{payment.date_pedido | date:"dd/MM/yyyy"}} às {{payment.date_pedido | date:"hh:mm:ss"}} no valor de R${{ payment.valor }} foi aprovado e processado com sucesso.</p>
+          
+          <div>Comprovante de pagamento: {{ payment.token }}</div>
+          <div>Comércio: {{ payment.comerce }}</div>
+          <p>Pedido: {{ payment.no_pedido }}</p>
+        </div>
+        <div class="px-3">
+          <p class="mt-3">Lembre-se:</p>
+          
+          <p>A PayMee é apenas um meio de pagamento, portanto caso você tenha qualquer reclamação, dúvida ou solicitação referente ao produto ou serviço comprado, por favor entre em contato diretamente com o comércio onde a compra foi realizada.</p>
+          
+          <p>Em caso de dúvidas sobre o pagamento, acesse nossas <a href="#">Perguntas Frequentes</a>, <a href="#">Formulário de Contato</a> ou entre em contato conosco através do email <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </p>
+        </div>
       </div>
       <div class="card-body" *ngIf="!situation">
         <h5><strong>PEDIDO CANCELADO</strong></h5>
         
-        <p>Olá {{ payment.username }}.</p>
-        
-        <p>O seu Pedido: {{ payment.no_pedido }} no valor de R${{ payment.valor }} foi cancelado pelo comércio.</p>
-        
-        <div>Código de identificação do pedido: {{ payment.no_pedido }}</div>
-        <div>Comércio: {{ payment.comerce }}</div>
-        <p>Este pedido era válido para pagamento até: {{payment.date_exp | date:"dd/MM/yyyy"}} às {{payment.date_exp | date:"hh:mm:ss"}}</p>
-        
-        <p>O prazo para pagamento já esgotou e o pedido foi cancelado automaticamente, pois não localizamos o pagamento dentro do prazo definido. Por favor, realize uma nova compra respeitando o prazo limite para a transação.</p>
-        <div class="d-flex">
-          <i class="fa fa-star fa-2x text-danger mr-2"></i>
-          <span> Caso já tenha efetuado o pagamento, por favor entre em contato conosco o mais rápido possível e <strong>envie o comprovante de pagamento</strong> para o e-mail <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </span>
+        <div class="bg-ultraligth-grey p-3">
+          <p>Olá {{ payment.username }}.</p>
+          
+          <p>O seu Pedido: {{ payment.no_pedido }} no valor de R${{ payment.valor }} foi cancelado pelo comércio.</p>
+          
+          <div>Código de identificação do pedido: {{ payment.no_pedido }}</div>
+          <div>Comércio: {{ payment.comerce }}</div>
+          <p>Este pedido era válido para pagamento até: {{payment.date_exp | date:"dd/MM/yyyy"}} às {{payment.date_exp | date:"hh:mm:ss"}}</p>
+        </div>
+        <div class="p-3">
+          <p>O prazo para pagamento já esgotou e o pedido foi cancelado automaticamente, pois não localizamos o pagamento dentro do prazo definido. Por favor, realize uma nova compra respeitando o prazo limite para a transação.</p>
+          <div class="d-flex">
+            <i class="fa fa-star fa-2x text-danger mr-2"></i>
+            <span> Caso já tenha efetuado o pagamento, por favor entre em contato conosco o mais rápido possível e <strong>envie o comprovante de pagamento</strong> para o e-mail <a href="mailto:falecom@paymee.com.br">falecom@paymee.com.br</a> </span>
+          </div>
         </div>
       </div>
     </div>

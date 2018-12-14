@@ -66,7 +66,7 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
   /* Squares below circles */
   z-index: 1;
 }
-@media only screen and (min-width: 376px) {
+
   /* Squares */
   .tabs li:before, .tabs li:after {
     background: #eee;
@@ -93,7 +93,7 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
     /* Circles over squares */
     z-index: 2;
   }
-}
+
   .tabs .active a:after, .tabs .active a:before {
     background: #eee;
   }
@@ -110,7 +110,6 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
   right: -20px;
 }
 
-
 .btn-light-blue {
   background-color: #679fdc;
   color: white;
@@ -121,10 +120,6 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
   border: none;
 }
 
-.bg-agency {
-  background-color: #eef1f3;
-}
-
-.bg-account {
-  background-color: #dce1e6;
+.bg-ultraligth-grey {
+  background-color: #fbfbfb;
 }

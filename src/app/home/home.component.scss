@@ -9,3 +9,8 @@
     border-color: lightgray;
     padding: 2px;
 }
+.only-mobile {
+    @media only screen and (min-width: 449px) {
+        display: none;
+    }
+}
