@@ -7,7 +7,7 @@
       </ul>
     </div>
     <div class="col-md-10 offset-md-1">
-      <div class="card border-0">
+      <div class="card border-0 shadow-sm">
         <div class="card-header bg-white">
           <span class="col-md-12 mx-3 text-secondary">Selecione o seu banco:</span>   
         </div>
@@ -32,8 +32,8 @@
               </ng-template>
               
               <ng-template #item let-bank let-i="id">
-                <div (click)="selectedBankMoney=bank" class="mr-5" >
-                  <img [src]="bank.logo" width="60px" [ngClass]="{'selected': selectedBankMoney===bank,
+                <div (click)="selectedBankMoney=bank" class="mr-5 mb-2" >
+                  <img [src]="bank.logo" width="80px" [ngClass]="{'selected': selectedBankMoney===bank,
                   'rounded': selectedBankMoney!==bank}" >
                 </div>
               </ng-template>
@@ -97,8 +97,8 @@
               </ng-template>
               
               <ng-template #item let-bank let-i="id">
-                <div (click)="selectedBank=bank" class="mr-5" >
-                  <img [src]="bank.logo" width="60px" [ngClass]="{'selected': selectedBank===bank,
+                <div (click)="selectedBank=bank" class="mr-5 mb-2" >
+                  <img [src]="bank.logo" width="80px" [ngClass]="{'selected': selectedBank===bank,
                   'rounded': selectedBank!==bank}" >
                 </div>
               </ng-template>
