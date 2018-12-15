@@ -3,6 +3,7 @@ import { Observable, Subscription, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Bank } from '../model/bank';
 import { BankService } from '../service/bank.service';
+import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-confirm',
@@ -25,7 +26,9 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   private subs: Subscription;
 
   constructor(
-    private bankService: BankService
+    private bankService: BankService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -39,6 +42,9 @@ export class ConfirmComponent implements OnInit, OnDestroy {
       })
     );
     this.subs = this.$counter.subscribe((x) => this.time_disp = this.getTime(this.difference));
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.transfer_type = (params['transfer_type'] == 'true') ;
+    });
   }
 
   ngOnDestroy() {
@@ -56,6 +62,12 @@ export class ConfirmComponent implements OnInit, OnDestroy {
       seconds = t % 60;
 
       return days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+  }
+
+  tab_click(transfer_type: boolean) {
+    if(transfer_type != this.transfer_type){
+      this.router.navigate(['/'], { queryParams: {transfer_type : transfer_type}});
+    }
   }
 
 }

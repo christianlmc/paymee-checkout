@@ -123,3 +123,9 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
 .bg-ultraligth-grey {
   background-color: #fbfbfb;
 }
+
+.only-mobile {
+  @media only screen and (min-width: 465px) {
+      display: none;
+  }
+}

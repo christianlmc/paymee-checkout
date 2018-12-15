@@ -1,5 +1,11 @@
 <div class="container mt-5">
   <div class="row">
+    <div class="col-md-10 offset-md-1">  
+      <ul class="tabs row">
+        <li [ngClass]="{'col-xs-6': true, 'active': transfer_type}" (click)="tab_click(true)"><a href="javascript:;">Transferência<br class="only-mobile"> Bancária</a></li> 
+        <li [ngClass]="{'col-xs-6': true, 'active': !transfer_type}" (click)="tab_click(false)"><a href="javascript:;">Pagamento<br class="only-mobile"> em Dinheiro</a></li>
+      </ul>
+    </div>
     <div class="card border-0 col-md-10 offset-md-1 shadow-sm">
       <div class="card-body mx-3 pb-2">
         <div class="row">
