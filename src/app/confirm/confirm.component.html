@@ -6,7 +6,7 @@
           <div class="col-md-12">
             <p class="my-2 text-muted">Dados para pagamento:</p>
           </div>
-
+          
           <div class="col-md-4 bg-ultraligth-grey">
             <div class="form-group">
               <p class="text-muted">Favorecido: </p>
@@ -14,15 +14,25 @@
               <small class="text-muted">Paymee Brasil Serviços de Pagamentos SA</small>
             </div>
           </div>
-          <div class="col-md-4 bg-ultraligth-grey">
-            <div class="card border-0 text-muted text-center">
-              <div class="card-body p-2 bg-agency">
-                Agência:
-                <h3><strong>{{ bank.agency }}</strong></h3>
-              </div>
-              <div class="card-body p-2 bg-account">
-                Conta Corrente:
-                <h3><strong>{{ bank.ccurrent }}</strong></h3>
+          <div class="col-md-4 bg-ultraligth-grey d-flex">
+            <div class="flex-grow-1 d-flex">
+              <div class="col col-12 d-none d-flex flex-column text-muted text-center">
+                <div class="row flex-grow-1">
+                  <div class="col-12 bg-agency d-flex">
+                    <div class="col-12 align-self-center">
+                      Agência:
+                      <h3><strong>{{ bank.agency }}</strong></h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="row flex-grow-1">
+                  <div class="col-12 bg-account d-flex">
+                    <div class="col-12 align-self-center">
+                      Conta Corrente:
+                      <h3><strong>{{ bank.ccurrent }}</strong></h3>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -38,7 +48,7 @@
             </h5>
             <p>para fazer seu pagamento.</p>
           </div>
-
+          
           <div class="col-md-12 mt-3">
             <div class="accordion" id="accordion">
               <div class="card border-0">
@@ -52,12 +62,12 @@
                 </div>
                 <div id="aditional-info" class="collapse" aria-labelledby="header" data-parent="#accordion" >
                   <div class="card-body">
-                      <p><span class="step">1</span>Acesse https://www.itau.com.br/ com sua agência, conta e senha.</p>
-                      <p><span class="step">2</span>No menu de serviços, selecione "Transferência entre Contas Itaú"</p>
-                      <p><span class="step">3</span>Informe a agência 7633 e conta-corrente 10704-5</p>
-                      <p><span class="step">4</span> Confirme o nome para pagamento: PayMee Brasil Serviços de Pagamentos S.A.</p>
-                      <p><span class="step">5</span> Confirme o valor de: R$ 5.00 e efetue o pagamento. </p>
-                      <p><span class="step">6</span> PRONTO! O pagamento do seu pedido será confirmado à Zona Azul (Inova) </p>
+                    <p><span class="step">1</span>Acesse https://www.itau.com.br/ com sua agência, conta e senha.</p>
+                    <p><span class="step">2</span>No menu de serviços, selecione "Transferência entre Contas Itaú"</p>
+                    <p><span class="step">3</span>Informe a agência 7633 e conta-corrente 10704-5</p>
+                    <p><span class="step">4</span>Confirme o nome para pagamento: PayMee Brasil Serviços de Pagamentos S.A.</p>
+                    <p><span class="step">5</span>Confirme o valor de: R$ 5.00 e efetue o pagamento. </p>
+                    <p><span class="step">6</span>PRONTO! O pagamento do seu pedido será confirmado à Zona Azul (Inova) </p>
                   </div>
                 </div>
               </div>
